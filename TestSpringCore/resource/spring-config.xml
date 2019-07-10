@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<!-- Dependent bean -->
+	
+	<bean id="my_atm" class="com.app.dependent.ATMImpl" scope="singleton" init-method="myInit" destroy-method="myDestroy">
+		<property name="ref" ref="soap"></property>
+	</bean>
+	
+	<!-- Dependency bean -->
+	
+	<bean id="http" class="com.app.dependency.HttpTransport" scope="singleton" lazy-init="true"></bean>
+	<bean id="soap" class="com.app.dependency.SoapTransport" scope="singleton"></bean>
+	<bean id="text" class="com.app.dependency.TextTransport" scope="prototype"></bean>
+
+
+</beans>
+		
